@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Security Tools | Manpreet Cyber Security</title><link rel="stylesheet" href="style.css"></head><body>
+<header><a class="logo" href="index.html"><span class="logo-mark">盾</span><span>MANPREET<span class="gradient-text">SEC</span></span></a><nav><a href="index.html">Home</a><a href="services.html">Services</a><a class="active" href="tools.html">Tools</a><a href="abouts.html">About</a><a class="nav-cta" href="login.html">Get Started ↗</a></nav></header>
+<main><section class="hero"><span class="eyebrow">INTERACTIVE LEARNING</span><h1>Your Cyber <span class="gradient-text">Toolkit.</span></h1><p>Simple educational checks and trusted resources to help you improve your digital safety knowledge.</p></section>
+<section class="section container"><div class="grid">
+<article class="card"><div class="icon">🔐</div><span class="badge">RUNS IN YOUR BROWSER</span><h2>Password Checker</h2><p>Use a sample password to check basic characteristics. Never enter a real account password.</p><div class="field"><label for="samplePassword">Sample password</label><input id="samplePassword" type="password" autocomplete="off" placeholder="Type a sample only"></div><div class="field"><label class="inline-label"><input id="showPassword" type="checkbox">Show sample password</label></div><button class="btn" id="checkPassword" type="button" style="margin-top:18px">Check Strength</button><p id="passwordResult" class="result" aria-live="polite">Your result will appear here.</p><p class="notice">This is a basic estimate, not a password-cracking test or guarantee of security.</p></article>
+<article class="card"><div class="icon">🧭</div><span class="badge">QUICK CHECKLIST</span><h2>Safety Checklist</h2><p>Mark the habits you have already put in place.</p><div class="field"><label class="inline-label"><input type="checkbox">I use unique passwords.</label></div><div class="field"><label class="inline-label"><input type="checkbox">I enable MFA where available.</label></div><div class="field"><label class="inline-label"><input type="checkbox">I keep apps and devices updated.</label></div><div class="field"><label class="inline-label"><input type="checkbox">I back up important files.</label></div><div class="field"><label class="inline-label"><input type="checkbox">I check unexpected links carefully.</label></div></article></div></section>
+<section class="section container"><h2 class="section-title">Trusted Learning <span class="gradient-text">Resources</span></h2><p class="section-intro">Continue learning from established cybersecurity organizations.</p><div class="grid">
+<article class="card"><div class="icon">🌍</div><h3>OWASP</h3><p>Web application security learning and guidance.</p><a class="btn btn-secondary" href="https://owasp.org/" target="_blank" rel="noopener noreferrer">Visit OWASP ↗</a></article>
+<article class="card"><div class="icon">🛡️</div><h3>CISA</h3><p>Practical recommendations for everyday cyber safety.</p><a class="btn btn-secondary" href="https://www.cisa.gov/secure-our-world" target="_blank" rel="noopener noreferrer">Visit CISA ↗</a></article>
+<article class="card"><div class="icon">📘</div><h3>NIST</h3><p>Cybersecurity frameworks, standards and guidance.</p><a class="btn btn-secondary" href="https://www.nist.gov/cybersecurity" target="_blank" rel="noopener noreferrer">Visit NIST ↗</a></article></div></section></main>
+<footer>© 2026 Manpreet Cyber Security · <a href="index.html">Home</a></footer>
+<script>
+const samplePassword=document.getElementById('samplePassword'), result=document.getElementById('passwordResult');
+document.getElementById('showPassword').addEventListener('change',function(){samplePassword.type=this.checked?'text':'password'});
+document.getElementById('checkPassword').addEventListener('click',function(){
+ const p=samplePassword.value;
+ if(!p){result.textContent='Please enter a sample password first.';return}
+ let score=0;
+ if(p.length>=14)score++;
+ if(/[a-z]/.test(p)&&/[A-Z]/.test(p))score++;
+ if(/[0-9]/.test(p))score++;
+ if(/[^A-Za-z0-9]/.test(p))score++;
+ if(p.length<8)result.textContent='Weak indicators — choose a longer password.';
+ else if(score<=2)result.textContent='Fair indicators — improve length and unpredictability.';
+ else if(score===3)result.textContent='Good basic indicators. Make sure it is unique.';
+ else result.textContent='Several good indicators. This does not guarantee security.';
+});
+</script></body></html>
